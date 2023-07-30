@@ -105,6 +105,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+
       - uses: gradle/gradle-build-action@v2
       # - run: ./gradlew assembleDebug detekt spotlessCheck testsOnCi
       - run: ./gradlew assembleRelease
@@ -131,7 +132,7 @@ jobs:
           echo "LIST: " ${{ env.PRG_NAME }}-${{ env.PRG_VERSION }}-release.apk
           ls -l ./signed-apk/
 
-      - uses: deep-soft/sign-android-release@master
+      - uses: deep-soft/sign-android-release@1.0.4
         name: Sign app APK
         if: env.ANDROID_SIGNING_KEY != null
         id: sign-exodus-android
@@ -181,3 +182,8 @@ jobs:
           files: |
             ./signed-apk/${{ env.PRG_NAME }}-${{ env.PRG_VERSION }}-release-unsigned.apk
             _tag_name_.txt
+
+      - name: gradle build --scan
+        shell: bash
+        run: |
+          gradle build --scan
