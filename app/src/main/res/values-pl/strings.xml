@@ -80,6 +80,7 @@
     <plurals name="trackers_status">
         <item quantity="one"><xliff:g id="percentage">%1$d</xliff:g>%% | <xliff:g id="apps">%2$d</xliff:g> app</item>
         <item quantity="few"><xliff:g id="percentage">%1$d</xliff:g>%% | <xliff:g id="apps">%2$d</xliff:g> app</item>
+        <item quantity="many"><xliff:g id="percentage">%1$d</xliff:g>%% | <xliff:g id="apps">%2$d</xliff:g> app</item>
         <item quantity="other"><xliff:g id="percentage">%1$d</xliff:g>%% | <xliff:g id="apps">%2$d</xliff:g> apps</item>
     </plurals>
 
@@ -92,6 +93,7 @@
     <plurals name="trackers_presence">
         <item quantity="one">Obecny w <xliff:g id="percentage">%1$d</xliff:g>%% (<xliff:g id="apps">%2$d</xliff:g> aplikacjach) z Twoich aplikacji</item>
         <item quantity="few">Obecny w <xliff:g id="percentage">%1$d</xliff:g>%% (<xliff:g id="apps">%2$d</xliff:g> aplikacjach) z Twoich aplikacji</item>
+        <item quantity="many">Obecny w <xliff:g id="percentage">%1$d</xliff:g>%% (<xliff:g id="apps">%2$d</xliff:g> aplikacjach) z Twoich aplikacji</item>
         <item quantity="other">Obecny w <xliff:g id="percentage">%1$d</xliff:g>%% (<xliff:g id="apps">%2$d</xliff:g> aplikacjach) z Twoich aplikacji</item>
     </plurals>
     
