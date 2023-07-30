@@ -48,7 +48,7 @@ jobs:
           _ref_org_=${{ env.TAG_REF }}
           _ref_len_="${#_ref_org_}"
           _ref_=$(echo ${_ref_all_::$_ref_len_})
-          _prg_version_=$(grep "versionName " "app/build.gradle" | awk -F ' ' '{print $2}' | awk -F '"' '{print $2}')
+          _prg_version_=$(grep "versionName " "app/build.gradle"  | cut -d '"' -f2)
           echo "TAG_REF=$_ref_" >> $GITHUB_ENV
           _build_=${{ env.TAG_BUILD }}.$_ref_
           echo "TAG_BUILD=$_build_" >> $GITHUB_ENV
@@ -63,6 +63,21 @@ jobs:
           echo "REF: ${{ env.TAG_REF }}
           echo "BLD: ${{ env.TAG_BUILD }}
           echo "${{ env.TAG_NAME }}-${{ env.TAG_BUILD }}" > _tag_name_.txt
+
+# signingConfig signingConfigs.release
+      - name: skip sign
+        shell: bash
+        run: |
+          #set -x;
+          sed -i '/^    signingConfigs {$/,/^    }$/d' app/build.gradle;
+          sed -i '/signingConfig signingConfigs.release/d' app/build.gradle;
+          sed -i '/^def keystoreProperties = new Properties()$/,/^keystoreProperties.load(new FileInputStream(rootProject.file(\"keystore.properties\")))$/d' app/build.gradle;
+          echo "sign ... ";
+          grep -i sign app/build.gradle || true;
+          sleep 2
+          echo "keystore ... ";
+          grep keystore app/build.gradle || true;
+          echo "... done";
 
       - name: Create source archive
         continue-on-error: true
