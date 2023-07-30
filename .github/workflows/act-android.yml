@@ -132,7 +132,7 @@ jobs:
           echo "LIST: " ${{ env.PRG_NAME }}-${{ env.PRG_VERSION }}-release.apk
           ls -l ./signed-apk/
 
-      - uses: deep-soft/sign-android-release@1.0.4
+      - uses: deep-soft/sign-android-release@v1.0.4
         name: Sign app APK
         if: env.ANDROID_SIGNING_KEY != null
         id: sign-exodus-android
