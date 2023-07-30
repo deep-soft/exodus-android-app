@@ -11,9 +11,9 @@ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
-  push:
-    tags:
-      - release-v*
+#  push:
+#    tags:
+#      - release-v*
   workflow_dispatch:
 
 jobs:
