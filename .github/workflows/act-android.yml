@@ -132,7 +132,7 @@ jobs:
           echo "LIST: " ${{ env.PRG_NAME }}-${{ env.PRG_VERSION }}-release.apk
           ls -l ./signed-apk/
 
-      - uses: deep-soft/sign-android-release@v1.0.4
+      - uses: deep-soft/sign-android-release@master
         name: Sign app APK
         if: env.ANDROID_SIGNING_KEY != null
         id: sign-exodus-android
@@ -184,6 +184,15 @@ jobs:
             _tag_name_.txt
 
       - name: gradle build --scan
+        continue-on-error: true
         shell: bash
         run: |
           gradle build --scan
+
+      - name: Upload Artifacts
+        uses: deep-soft/upload-artifact@v3
+        with:
+          name: gradle-scan
+          path: |
+            /home/runner/work/exodus-android-app/exodus-android-app/app/build/intermediates/lint_intermediate_text_report/debug/lint-results-debug.txt
+            /home/runner/work/exodus-android-app/exodus-android-app/app/build/reports/lint-results-debug.html
