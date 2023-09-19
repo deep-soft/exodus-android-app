@@ -69,14 +69,14 @@ jobs:
         shell: bash
         run: |
           #set -x;
-          sed -i '/^    signingConfigs {$/,/^    }$/d' app/build.gradle;
-          sed -i '/signingConfig signingConfigs.release/d' app/build.gradle;
-          sed -i '/^def keystoreProperties = new Properties()$/,/^keystoreProperties.load(new FileInputStream(rootProject.file(\"keystore.properties\")))$/d' app/build.gradle;
+          sed -i '/^    signingConfigs {$/,/^    }$/d' app/build.gradle.kts;
+          sed -i '/signingConfig signingConfigs.release/d' app/build.gradle.kts;
+          sed -i '/^def keystoreProperties = new Properties()$/,/^keystoreProperties.load(new FileInputStream(rootProject.file(\"keystore.properties\")))$/d' app/build.gradle.kts;
           echo "sign ... ";
-          grep -i sign app/build.gradle || true;
+          grep -i sign app/build.gradle.kts || true;
           sleep 2
           echo "keystore ... ";
-          grep keystore app/build.gradle || true;
+          grep keystore app/build.gradle.kts || true;
           echo "... done";
 
       - name: Create source archive
