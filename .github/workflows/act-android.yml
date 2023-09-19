@@ -48,7 +48,7 @@ jobs:
           _ref_org_=${{ env.TAG_REF }}
           _ref_len_="${#_ref_org_}"
           _ref_=$(echo ${_ref_all_::$_ref_len_})
-          _prg_version_=$(grep "versionName " "app/build.gradle"  | cut -d '"' -f2)
+          _prg_version_=$(grep "versionName " "app/build.gradle.kts"  | cut -d '"' -f2)
           echo "TAG_REF=$_ref_" >> $GITHUB_ENV
           _build_=${{ env.TAG_BUILD }}.$_ref_
           echo "TAG_BUILD=$_build_" >> $GITHUB_ENV
