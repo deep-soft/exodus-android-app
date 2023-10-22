@@ -72,6 +72,8 @@ jobs:
           sed -i '/^    signingConfigs {$/,/^    }$/d' app/build.gradle.kts;
           sed -i '/signingConfig signingConfigs.release/d' app/build.gradle.kts;
           sed -i '/^def keystoreProperties = new Properties()$/,/^keystoreProperties.load(new FileInputStream(rootProject.file(\"keystore.properties\")))$/d' app/build.gradle.kts;
+          sed -i '/signingConfig = signingConfigs.getByName("releaseConfig")/d' app/build.gradle.kts;
+          sed -i '/storeFile = file("release.keystore")/d' app/build.gradle.kts;
           echo "sign ... ";
           grep -i sign app/build.gradle.kts || true;
           sleep 2
